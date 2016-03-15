@@ -4,5 +4,8 @@ from .helper import crawl_food
 
 
 def food(request):
-    crawl_food('1 apple')
-    return HttpResponse(200)
+    if request.method == "POST":
+        food_name = request.POST.get('food')
+        crawl_food(food_name)
+        return HttpResponse("ВЗЕХМЕ ХРАНАТА!")
+    return render(request, 'food.html', {})

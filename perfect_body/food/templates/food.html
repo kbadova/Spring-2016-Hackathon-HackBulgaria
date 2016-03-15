@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Food</title>
+</head>
+<body>
+<form method="POST">
+	{% csrf_token %}
+	<p>КАЖИ МИ ХРАНИЧКАТА!!!!</p>
+	<input type="text" name="food"></input>
+	<input type="submit"></input>
+</form>
+</body>
+</html>
