@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+	{% load staticfiles %}
 	<meta charset="UTF-8">
 	<title>Perfect Body</title>
-	<link rel="stylesheet" type="text/css" href="css/structure.css">
+	<link rel="stylesheet" type="text/css" href="{% static "css/structure.css" %}">
 </head>
 <header>
 	<div class="header_wrapper">	
-		<img src="images/logo.png">
-		<img src="images/logo_text.png">
+		<img src="{% static "images/logo.png" %} ">
+		<img src="{% static "images/logo_text.png" %} ">
 <!-- 		<form method="POST">
 			<label>
 				Name: 
@@ -20,7 +21,7 @@
 			</label>
 			<input type="submit" value="Login">
 		</form> -->
-		<img src="images/logo.png">
+		<img src="{% static "images/logo.png" %}">
 	</div>
 </header>
 <body>
@@ -62,6 +63,7 @@
 
 			<dd class="main_menu">
 				tuk e menuto
+				<a href="/logout">Logout</a>
 			</dd>
 
 			<dt class="title history">
@@ -80,6 +82,6 @@
 	</div>
 
 </body>
-<script src="js/jquery-2.2.0.min.js"></script>
-<script src="js/main.js"></script>
+<script src="{% static "js/jquery-2.2.0.min.js" %}"></script>
+<script src="{% static "js/main.js" %}"></script>
 </html>

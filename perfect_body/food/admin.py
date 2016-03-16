@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Food, DietLabel, HealthLabel
+from .models import Food, DietLabel, HealthLabel, FoodUser
 
 
 class FoodAdmin(admin.ModelAdmin):
@@ -30,3 +30,16 @@ class HealthLabelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(HealthLabel, HealthLabelAdmin)
+
+
+class FoodUserAdmin(admin.ModelAdmin):
+    list_display = ('name',
+                    'email',
+                    'password',
+                    'gender',
+                    'years',
+                    'weight',
+                    'height',
+                    'BMI',)
+
+admin.site.register(FoodUser, FoodUserAdmin)

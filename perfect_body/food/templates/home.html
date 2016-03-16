@@ -10,14 +10,15 @@
 	<div class="header_wrapper">	
 		<img src="{% static "images/logo.png" %}">
 		<img src="{% static "images/logo_text.png" %}">
-		<form method="POST">
+		<form method="POST" action="/login">
+			{% csrf_token %}
 			<label>
-				Name: 
-				<input type="text">
+				Email: 
+				<input type="email" name="email">
 			</label>
 			<label>
-				Email:
-				<input type="email">
+				Password:
+				<input type="password" name="password">
 			</label>
 			<input type="submit" value="Login">
 		</form>
@@ -26,16 +27,39 @@
 </header>
 <body>
 	<div class="regestration wrapper">
-		<form method="POST">
+		<form method="POST" action="/registration">
+			{% csrf_token %}
 			<label>
 				Name: 
-				<input type="text">
+				<input type="text" name="name">
 			</label>
 			<label>
 				Email:
-				<input type="email">
+				<input type="email" name="email">
 			</label>
-			<label name="type" value="vegan">
+			<label>
+				Password:
+				<input type="password" name="password">
+			</label>
+			<label>
+				Gender:
+				<input type="text" name="gender">
+			</label>
+			<label>
+				Years:
+				<input type="number" name="years">
+			</label>
+			<label>
+				Weight:
+				<input type="number" name="weight">
+			</label>
+			<label>
+				Height:
+				<input type="number" name="height">
+			</label>
+	}
+
+<!-- 			<label name="type" value="vegan">
 				<input type="radio">
 				Vegan
 			</label>
@@ -46,7 +70,7 @@
 			<label name="type" value="blablabla">
 				<input type="radio">
 				blablabla
-			</label>
+			</label> -->
 			<input type="submit" value="Regestration">
 		</form>
 	</div>

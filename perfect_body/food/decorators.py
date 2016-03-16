@@ -1,4 +1,3 @@
-
 from django.shortcuts import redirect
 from functools import wraps
 
@@ -11,7 +10,7 @@ def login_required(redirect_url=None):
 
         @wraps(func)
         def _wrapped_view(request, *args, **kwargs):
-            session_email = request.session.get('email', False)
+            session_email = request.session.get('food_email', False)
 
             if not session_email:
                 return redirect(redirect_url)
@@ -31,7 +30,7 @@ def annon_required(redirect_url=None):
 
         @wraps(func)
         def _wrapped_view(request, *args, **kwargs):
-            session_email = request.session.get('email', False)
+            session_email = request.session.get('food_email', False)
             print(session_email)
             if session_email:
                 return redirect(redirect_url)
