@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load staticfiles %}
+	<meta charset="UTF-8">
+	<title>Perfect Body</title>
+	<link rel="stylesheet" type="text/css" href="{% static "css/structure.css" %}">
+</head>
+<header>
+	<div class="header_wrapper">	
+		<img src="{% static "images/logo.png" %}">
+		<img src="{% static "images/logo_text.png" %}">
+		<form method="POST">
+			<label>
+				Name: 
+				<input type="text">
+			</label>
+			<label>
+				Email:
+				<input type="email">
+			</label>
+			<input type="submit" value="Login">
+		</form>
+		<img src="{% static "images/logo.png" %}">
+	</div>
+</header>
+<body>
+	<div class="regestration wrapper">
+		<form method="POST">
+			<label>
+				Name: 
+				<input type="text">
+			</label>
+			<label>
+				Email:
+				<input type="email">
+			</label>
+			<label name="type" value="vegan">
+				<input type="radio">
+				Vegan
+			</label>
+			<label name="type" value="blabla">
+				<input type="radio">
+				blabla
+			</label>
+			<label name="type" value="blablabla">
+				<input type="radio">
+				blablabla
+			</label>
+			<input type="submit" value="Regestration">
+		</form>
+	</div>
+</body>
+<script src="{% static "js/jquery-2.2.0.min.js" %}"></script>
+<script src="{% static "js/main.js" %}"></script>
+</html>

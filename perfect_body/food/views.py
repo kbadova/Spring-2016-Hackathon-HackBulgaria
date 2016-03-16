@@ -9,3 +9,11 @@ def food(request):
         crawl_food(food_name)
         return HttpResponse("ВЗЕХМЕ ХРАНАТА!")
     return render(request, 'food.html', {})
+
+
+def home(request):
+    return render(request, 'home.html', {})
+
+
+def profile(request):
+    return render(request, 'profile.html', {})
