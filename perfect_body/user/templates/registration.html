@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>User-everywhere</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    .error {
+      color: red;
+    }
+    
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Make registration</h2>
+  <form role="form" method="post">
+{% csrf_token %}
+	<div class="form-group">
+      <label>Name:</label>
+      <input type="text" class="form-control" id="name" value="{{ name }}" name = "name" placeholder="Enter name">
+    </div>
+
+    <div class="form-group">
+      <label>Email:</label>
+      <input type="email" class="form-control" id="email" value="{{ email }}" name = "email" placeholder="Enter email">
+    </div>
+
+    <div class="form-group">
+      <label>Password:</label>
+      <input type="password" class="form-control" id="pwd" value="{{ password }}" name = "password" placeholder="Enter password">
+    </div>
+
+    <div class="form-group">
+      <label>Gender:</label>
+      	<input type="radio" class="form-control" id="male" value="male" name = "gender">Male<br>
+      	<input type="radio" class="form-control" id="female" value="female" name = "gender">Female
+    
+    </div>
+
+    <div class="form-group">
+      <label>Years:</label>
+      <input type="text" class="form-control" id="text" value="{{ years }}" name = "years">
+    </div>
+
+    <div class="form-group">
+      <label>Weight:</label>
+      <input type="text" class="form-control" id="text" value="{{ weight }}" name = "weight">
+    </div>
+
+    <div class="form-group">
+      <label>Height:</label>
+      <input type="text" class="form-control" id="text" value="{{ height }}" name = "height">
+    </div>
+
+
+    <button type="submit">Register</button>
+  </form>
+
+ <br/>
+  <div class='error'>
+    {{ error }}
+  </div>
+</div>
+
+</body>
+</html>
