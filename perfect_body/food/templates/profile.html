@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load staticfiles %}
+	<meta charset="UTF-8">
+	<title>Perfect Body</title>
+	<link rel="stylesheet" type="text/css" href="{% static "css/structure.css" %}">
+</head>
+<header>
+	<div class="header_wrapper">	
+		<img src="{% static "images/logo.png" %} ">
+		<img src="{% static "images/logo_text.png" %} ">
+<!-- 		<form method="POST">
+			<label>
+				Name: 
+				<input type="text">
+			</label>
+			<label>
+				Email:
+				<input type="email">
+			</label>
+			<input type="submit" value="Login">
+		</form> -->
+		<img src="{% static "images/logo.png" %}">
+	</div>
+</header>
+<body>
+	<div class="wrapper">	
+		<dl class="all">
+			<dt class="title profile">	
+				<h2>Profile</h2>
+			</dt>
+
+			<dd class="main_profile">
+				<form method="POST">
+					<label>
+						Name: 
+						<input type="text">
+					</label>
+					<label>
+						Email:
+						<input type="email">
+					</label>
+					<input type="submit" value="change">
+				</form>
+			</dd>
+
+			<dt class="title shop">	
+				<h2>Shop</h2>
+			</dt>
+
+			<dd class="main_shop">
+				<select>	
+					<option value="kaufland">Kaufland</option>
+					<option value="billa">Billa</option>
+				</select>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2932.208913843413!2d23.32121080000001!3d42.69929700000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa8568c5ac4b2f%3A0x9f0475d52ba2cb0b!2z0YPQuy4g4oCe0J_QuNGA0L7RgtGB0LrQsOKAnCA1LCAxMDAwINCh0L7RhNC40Y8!5e0!3m2!1sbg!2sbg!4v1443075923587" width="90%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+			</dd>
+
+			<dt class="title menu">	
+				<h2>Menu</h2>
+			</dt>
+
+			<dd class="main_menu">
+				tuk e menuto
+				<a href="/logout">Logout</a>
+			</dd>
+
+			<dt class="title history">
+				<h2>History</h2>	
+			</dt>
+
+			<dd class="main_history">
+				tuk e istoriqta
+			</dd>
+		</dl>
+	
+
+		<div class="line">	
+
+		</div>
+	</div>
+
+</body>
+<script src="{% static "js/jquery-2.2.0.min.js" %}"></script>
+<script src="{% static "js/main.js" %}"></script>
+</html>
