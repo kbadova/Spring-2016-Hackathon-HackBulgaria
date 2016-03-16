@@ -35,3 +35,20 @@ def registration(request):
 
     return render(request, 'registration.html', locals())
 
+
+@login_required(redirect_url=reverse_lazy('profile'))
+def login(request):
+
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        u = User.login_user(email, password)
+
+        if u is None:
+            error = 'Wrong username or password'
+        else:
+            request.session['email'] = email
+            return redirect(reverse('profile'))
+
+    return render(request, 'login.html', locals())
