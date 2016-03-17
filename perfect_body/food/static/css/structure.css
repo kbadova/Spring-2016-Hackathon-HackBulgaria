@@ -35,9 +35,9 @@ header {
 
 				.header_wrapper img:nth-child(2){
 					position: absolute;
-					left: 31%;
+					left: 33%;
 					top: 19px;
-					width: 40%;
+					width: 31%;
 					height: 50px;
 				}
 
@@ -118,6 +118,7 @@ header {
 		border-left: 1px solid #b46348;
 		border-right: 1px solid #b46348;
 		margin: 0 auto;
+		cursor: pointer;
 	}
 
 		.all dd {
@@ -157,14 +158,54 @@ header {
 		margin-bottom: 10px;
 	}
 
-.main_shop select {
-	width: 20%;
-	margin: 15px auto;
+
+.main_shop {
+	width: 100%;
 }
 
-.main_shop	iframe {
-	margin-bottom: 15px;
+	.main_shop select {
+		display: inline;
+		width: 20%;
+		margin: 15px auto;
+	}
+
+	.main_shop label {
+		display: block;
+	}
+
+	.main_shop	iframe {
+		margin-bottom: 15px;
+	}
+
+	.main_shop p {
+		display: inline;
+	}
+
+		.main_shop input[type=select]{
+			display: inline;
+		}
+
+.main_menu {
+	width: 80%;
+	margin: 0 auto;
 }
+	
+	.main_menu .breakfast,
+	.main_menu .lunch,
+	.main_menu .diner {
+		display: inline-block;
+		width: 30%;
+		height: 100%;
+	}
+
+	.main_menu label {
+		display: block;
+	}
+
+	.main_menu input {
+		margin-top: 5px;
+		display: inline;
+	}
 
 .regestration {
 	width: 100%;
@@ -207,3 +248,55 @@ header {
 			width: 100%;
 			display: inline;		
 		}
+
+
+#map {
+	height: 500px;
+	margin-top: 10px;
+}
+
+.controls {
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 300px;
+}
+
+#pac-input:focus {
+    border-color: #4d90fe;
+}
+
+.pac-container {
+    font-family: Roboto;
+}
+
+#type-selector {
+    color: #fff;
+    background-color: #4d90fe;
+    padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+#target {
+    width: 345px;
+}
