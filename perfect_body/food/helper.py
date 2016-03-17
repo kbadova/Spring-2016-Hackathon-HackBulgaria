@@ -15,12 +15,21 @@ def crawl_food(food_name):
     food_quantity = result['ingredients'][0]['parsed'][0]['quantity']
     food_calories = result['calories']
 
-    food_protein_in_grams = result['ingredients'][0]['parsed'][0]['nutrients']['PROCNT']['quantity']
-    food_protein_in_grams = round(food_protein_in_grams, 2)
-    food_fat_in_grams = result['ingredients'][0]['parsed'][0]['nutrients']['FAT']['quantity']
-    food_fat_in_grams = round(food_fat_in_grams, 2)
-    food_carbohydrate_in_grams = result['ingredients'][0]['parsed'][0]['nutrients']['CHOCDF']['quantity']
-    food_carbohydrate_in_grams = round(food_carbohydrate_in_grams, 2)
+    if 'PROCNT' not in result['ingredients'][0]['parsed'][0]['nutrients']:
+        food_protein_in_grams = 0.0
+    else:
+        food_protein_in_grams = result['ingredients'][0]['parsed'][0]['nutrients']['PROCNT']['quantity']
+        food_protein_in_grams = round(food_protein_in_grams, 2)
+    if 'PROCNT' not in result['ingredients'][0]['parsed'][0]['nutrients']:
+        food_fat_in_grams = 0.0
+    else:
+        food_fat_in_grams = result['ingredients'][0]['parsed'][0]['nutrients']['FAT']['quantity']
+        food_fat_in_grams = round(food_fat_in_grams, 2)
+    if 'CHOCDF' not in result['ingredients'][0]['parsed'][0]['nutrients']:
+        food_carbohydrate_in_grams = 0.0
+    else:
+        food_carbohydrate_in_grams = result['ingredients'][0]['parsed'][0]['nutrients']['CHOCDF']['quantity']
+        food_carbohydrate_in_grams = round(food_carbohydrate_in_grams, 2)
 
     health_label = result['healthLabels']
     diet_label = result['dietLabels']
