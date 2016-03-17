@@ -215,6 +215,12 @@ header {
 	margin: 30px auto;
 }
 
+	.regestration h2 {
+		width: 100px;
+		font-size: 20px;
+		margin: 0 auto;
+	}
+
 	.regestration form {
 		width: 40%;
 		margin: 0 auto;
