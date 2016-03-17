@@ -8,58 +8,39 @@
 </head>
 <header>
 	<div class="header_wrapper">	
-		<img src="{% static "images/logo.png" %}">
-		<img src="{% static "images/logo_text.png" %}">
-		<form method="POST" action="/login">
-			{% csrf_token %}
-			<label>
-				Email: 
-				<input type="email" name="email">
-			</label>
-			<label>
-				Password:
-				<input type="password" name="password">
-			</label>
-			<input type="submit" value="Login">
-		</form>
-		<img src="{% static "images/logo.png" %}">
+		<div>
+			<img src="{% static "images/logo.png" %}">
+		</div>
+		<div>
+			<img src="{% static "images/logo_text.png" %}">
+		</div>
+		<div>
+			<img src="{% static "images/logo.png" %}">
+		</div>
 	</div>
 </header>
 <body>
-	<div class="regestration wrapper">
-	<h2>Register</h2>
-		<form method="POST" action="/registration">
-			{% csrf_token %}
-			<label>
-				Name: 
-				<input type="text" name="name">
-			</label>
-			<label>
-				Email:
-				<input type="email" name="email">
-			</label>
-			<label>
-				Password:
-				<input type="password" name="password">
-			</label>
-			<label>
-				Gender (M or F):
-				<input type="text" name="gender">
-			</label>
-			<label>
-				Years:
-				<input type="number" name="years">
-			</label>
-			<label>
-				Weight:
-				<input type="number" name="weight">
-			</label>
-			<label>
-				Height:
-				<input type="number" name="height">
-			</label>
-			<input type="submit" value="Regestration">
-		</form>
+	<div class="login_wrapper">
+		<div class="info">
+			<p>Lorem ipsum dolor sit amet, cu mea convenire consequat, cu exerci assentior mel, at vel tation nostro alterum. Ea eos quas nonumy commodo, vix et ipsum consulatu, vim illum luptatum salutatus ne. Nemore utamur tamquam nec no, eos illud munere senserit no, vix liber dicunt tractatos et. Et detracto delicatissimi sit, eos in ubique senserit persequeris.
+			Quo ex choro delicata, equidem offendit qui ex. Omittam scriptorem id per. Cu facete laoreet eos. Quando volumus tincidunt est te, qui facilis denique ut. Eos cu ipsum facilisis consequuntur.
+			</p>
+		</div>
+		<div class="login">
+			<form method="POST" action="/login">
+				{% csrf_token %}
+				<label>
+					Email: 
+					<input type="email" name="email">
+				</label>
+				<label>
+					Password:
+					<input type="password" name="password">
+				</label>
+				<input type="submit" value="Login">
+				<a href="/registration">or register</a>
+			</form>
+		</div> 
 	</div>
 </body>
 <script src="{% static "js/jquery-2.2.0.min.js" %}"></script>

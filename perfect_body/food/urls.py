@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from .views import food, home, profile, login, registration, logout
+from .views import food, home, profile, login, registration, logout, saveBreakfast
 
 
 urlpatterns = [

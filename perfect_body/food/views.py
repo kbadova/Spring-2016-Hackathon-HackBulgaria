@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse_lazy, reverse
-
+import random
 from .models import FoodUser
 from .decorators import login_required, annon_required
 from .helper import *
@@ -23,25 +23,30 @@ def home(request):
 
 @login_required(redirect_url=reverse_lazy('home'))
 def profile(request):
+    # print(request.POST)
     email = request.session['food_email']
     user = FoodUser.objects.get(email=email)
-
+    fields = Menu()
     name, _, _, gender, years, weight, height, BMI, max_cal = get_cls_get_attr(FoodUser, request)
-
     if request.method == 'POST':
-        name, _, _, gender, years, weight, height = get_user_post_attr(request)
+        pass
+    if request.POST.get("Breakfast"):
 
-        BMI = int(weight) / ((int(height) / 100)**2)
-        calc_cal = max_calories(int(height), int(weight), int(years), gender)
-        new_password = request.POST.get('new_password')
+        # name, _, _, gender, years, weight, height = get_user_post_attr(request)
 
-        new_food_user = FoodUser.objects.filter(name=name)\
-                                        .update(password=new_password,
-                                                years=years,
-                                                weight=weight,
-                                                height=height,
-                                                BMI=BMI,
-                                                max_cal=calc_cal)
+        # BMI = int(weight) / ((int(height) / 100)**2)
+        # calc_cal = max_calories(int(height), int(weight), int(years), gender)
+        # new_password = request.POST.get('new_password')
+
+        # new_food_user = FoodUser.objects.filter(name=name)\
+        #                                 .update(password=new_password,
+        #                                         years=years,
+        #                                         weight=weight,
+        #                                         height=height,
+        #                                         BMI=BMI,
+        #                                         max_cal=calc_cal)
+
+        print(request.POST.getlist('checks[]'))
 
         return render(request, 'profile.html', locals())
     return render(request, 'profile.html', locals())
@@ -93,3 +98,11 @@ def login(request):
 def logout(request):
     request.session.flush()
     return redirect(reverse('home'))
+
+
+def Menu():
+    foods = random.sample(set(Food.objects.filter(meal_time='breakfast')), 5)
+    global FOOD_CHOICES
+    FOOD_CHOICES = foods
+    # print(FOOD_CHOICES)
+    return foods

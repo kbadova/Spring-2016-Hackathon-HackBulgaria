@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load staticfiles %}
+	<meta charset="UTF-8">
+	<title>Perfect Body</title>
+	<link rel="stylesheet" type="text/css" href="{% static "css/structure.css" %}">
+</head>
+<header>
+	<div class="header_wrapper">	
+		<div>
+			<img src="{% static "images/logo.png" %}">
+		</div>
+		<div>
+			<img src="{% static "images/logo_text.png" %}">
+		</div>
+		<div>
+			<img src="{% static "images/logo.png" %}">
+		</div>
+	</div>
+</header>
+<body>
+<div class="regestration wrapper">
+	<h2>Register</h2>
+		<form method="POST" action="/registration">
+			{% csrf_token %}
+			<label>
+				Name: 
+				<input type="text" name="name">
+			</label>
+			<label>
+				Email:
+				<input type="email" name="email">
+			</label>
+			<label>
+				Password:
+				<input type="password" name="password">
+			</label>
+			<label>
+				Gender (M or F):
+				<input type="text" name="gender">
+			</label>
+			<label>
+				Years:
+				<input type="number" name="years">
+			</label>
+			<label>
+				Weight:
+				<input type="number" name="weight">
+			</label>
+			<label>
+				Height:
+				<input type="number" name="height">
+			</label>
+			<input type="submit" value="Regestration">
+		</form>
+	</div>
+</body>
