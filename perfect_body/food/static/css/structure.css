@@ -6,7 +6,7 @@
 
 html {
 	font-family: "Myriad Pro";
-	font-size: 14px;
+	font-size: 18px;
 	color: #b46348;
 }
 
@@ -151,12 +151,27 @@ header {
 	width: 75%;
 	margin: 15px auto;
 }
+
+	.main_profile form {
+		display: inline-block;
+		margin-left: 3%;
+	}
 	
 
 	.main_profile input {
 		display: block;
 		margin-bottom: 10px;
 	}
+
+	.main_profile p {
+		display: block;
+	}
+
+		.bmi {
+			position: absolute;
+		    top: 67px;
+		    right: 18%;
+		}
 
 
 .main_shop {
@@ -184,6 +199,7 @@ header {
 		.main_shop input[type=select]{
 			display: inline;
 		}
+
 
 .main_menu {
 	width: 80%;
