@@ -91,7 +91,7 @@
 					<h2>Breakfast</h2>
 					<form method="POST" action="" name="breakfast">
 						{% csrf_token %}
-						{% for field in fields %}
+						{% for field in breakfast_fields %}
 							<input type="checkbox" name="checks[]" value="{{field}}">
 							{{field}}
 							<br></br>
@@ -101,38 +101,26 @@
 				</div>
 				<div class="lunch">
 					<h2>Lunch</h2>
-					<form method="POST" action="">
-					{% csrf_token %}
-						<label>
-							<input type="radio" value="first" name="lunch">
-							bla
-						</label>
-						<label>
-							<input type="radio" value="first" name="lunch">
-							bla
-						</label>
-						<label>
-							<input type="radio" value="first" name="lunch">
-							bla
-						</label>
+					<form method="POST" action="" name="lunch">
+						{% csrf_token %}
+						{% for field in lunch_fields %}
+							<input type="checkbox" name="checks[]" value="{{field}}">
+							{{field}}
+							<br></br>
+						{% endfor %}
+					<input type="submit" value="Submit", name="Lunch">
 					</form>
 				</div>
 				<div class="dinner">
-					<form method="POST" action="">
-					{% csrf_token %}
-						<h2>Dinner</h2>
-						<label>
-							<input type="radio" value="first" name="dinner">
-							bla
-						</label>
-						<label>
-							<input type="radio" value="first" name="dinner">
-							bla
-						</label>
-						<label>
-							<input type="radio" value="first" name="dinner">
-							bla
-						</label>
+					<h2>Dinner</h2>
+					<form method="POST" action="" name="dinner">
+						{% csrf_token %}
+						{% for field in dinner_fields %}
+							<input type="checkbox" name="checks[]" value="{{field}}">
+							{{field}}
+							<br></br>
+						{% endfor %}
+					<input type="submit" value="Submit", name="Dinner">
 					</form>
 				</div>
 			</dd>

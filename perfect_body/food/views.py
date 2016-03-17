@@ -38,7 +38,9 @@ def profile(request):
         if request.POST.get('Change Password'):
             print(request.POST)
 
-    fields = Menu()
+    breakfast_fields = Menu("breakfast")
+    lunch_fields = Menu("lunch")
+    dinner_fields = Menu("dinner")
     name, _, _, gender, years, weight, height, BMI, max_cal = get_cls_get_attr(FoodUser, request)
     if request.method == 'POST':
         pass
@@ -58,6 +60,14 @@ def profile(request):
         #                                         BMI=BMI,
         #                                         max_cal=calc_cal)
 
+        print(request.POST.getlist('checks[]'))
+
+        return render(request, 'profile.html', locals())
+    if request.POST.get("Lunch"):
+        print(request.POST.getlist('checks[]'))
+
+        return render(request, 'profile.html', locals())
+    if request.POST.get("Dinner"):
         print(request.POST.getlist('checks[]'))
 
         return render(request, 'profile.html', locals())
@@ -126,8 +136,8 @@ def saveProfile(request):
         return JsonResponse({'success': False})
 
 
-def Menu():
-    foods = random.sample(set(Food.objects.filter(meal_time='breakfast')), 5)
+def Menu(meal):
+    foods = random.sample(set(Food.objects.filter(meal_time=meal)), 5)
     global FOOD_CHOICES
     FOOD_CHOICES = foods
     # print(FOOD_CHOICES)
