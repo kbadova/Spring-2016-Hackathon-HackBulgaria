@@ -189,10 +189,13 @@ header {
 	width: 80%;
 	margin: 0 auto;
 }
+	.main_menu .breakfast {
+		margin-left: 2%;
+	}
 	
 	.main_menu .breakfast,
 	.main_menu .lunch,
-	.main_menu .diner {
+	.main_menu .dinner {
 		display: inline-block;
 		width: 30%;
 		height: 100%;
@@ -251,7 +254,7 @@ header {
 
 
 #map {
-	height: 500px;
+	height: 300px;
 	margin-top: 10px;
 }
 
