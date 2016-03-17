@@ -22,7 +22,9 @@ def home(request):
 
 @login_required(redirect_url=reverse_lazy('home'))
 def profile(request):
-    return render(request, 'profile.html', {})
+    email = request.session['food_email']
+    user = FoodUser.objects.get(email=email)
+    return render(request, 'profile.html', {'user': user})
 
 
 def registration(request):
@@ -31,7 +33,7 @@ def registration(request):
             get_user_post_attr(request)
 
         if not FoodUser.exists(email):
-            calc_BMI = int(weight)/((int(height)/100)**2)
+            calc_BMI = int(weight) / ((int(height) / 100)**2)
             print(calculate_normal_BMI(int(years), calc_BMI))
             u = FoodUser(
                 name=name,

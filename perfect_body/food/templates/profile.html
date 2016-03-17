@@ -10,6 +10,8 @@
 	<div class="header_wrapper">	
 		<img src="{% static "images/logo.png" %} ">
 		<img src="{% static "images/logo_text.png" %} ">
+		<p>Hello, {{ user.name }}</p>
+		<a href="/logout">Logout</a>
 <!-- 		<form method="POST">
 			<label>
 				Name: 
@@ -63,7 +65,6 @@
 
 			<dd class="main_menu">
 				tuk e menuto
-				<a href="/logout">Logout</a>
 			</dd>
 
 			<dt class="title history">

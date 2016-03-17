@@ -19,7 +19,7 @@ header {
 
 		.header_wrapper {
 			position: relative;
-			max-width: 768px;
+			max-width: 900px;
 			margin: 0 auto;
 		}
 
@@ -29,55 +29,80 @@ header {
 
 				.header_wrapper	img:first-child {
 					position: absolute;
-					left: 0;
+					left: 9%;
 					max-width: 100px;
 				}
 
 				.header_wrapper img:nth-child(2){
 					position: absolute;
-					left: 27%;
+					left: 31%;
 					top: 19px;
 					width: 40%;
 					height: 50px;
 				}
 
+
 				.header_wrapper	img:last-child {
 					position: absolute;
 					right: 9%;
+					top: 0;
 					max-width: 100px;
 				}
 
-				.header_wrapper form {
+				.header_wrapper a:active,
+				.header_wrapper a:hover, 
+				.header_wrapper a:link,
+				.header_wrapper a {
 					position: absolute;
-					left: 32%;
- 					top: 101px;
+					color: #b46348;
+					text-decoration: none;
+					background-color: #eccdae;
+					border: 1px solid #b46348;
+					border-radius: 5px; 
+					padding: 5px;
+					top: 150px;
+					left: 45%;
 				}
 
-					.header_wrapper label {
-						display: block;
-						margin-bottom: 10px;
+				.header_wrapper p {
+					position: absolute;
+					left: 41%;
+					top: 115px;
+					font-size: 25px;
+					font-style: italic;
+				}
+
+			.header_wrapper form {
+				position: absolute;
+				left: 32%;
+				top: 101px;
+			}
+
+				.header_wrapper label {
+					display: block;
+					margin-bottom: 10px;
+				}
+
+					.header_wrapper label input {
+						background: rgb(236, 218, 180);
+						opacity: 0.3;
 					}
 
-						.header_wrapper label input {
-							background: rgb(236, 218, 180);
-    						opacity: 0.3;
-						}
+					.header_wrapper label input:focus {
+						background: rgb(236, 218, 196);
+						opacity: 1;
+						color: #b46348;
+					}
 
-						.header_wrapper label input:focus {
-							background: rgb(236, 218, 196);
-    						opacity: 1;
-							color: #b46348;
-						}
-
-						input[type=submit] {
-							background: #eccdae;
-							color: #b46348;
-							font-size: 15px;
-							border: 1px solid #b46348;
-							border-radius: 10px;
-							width: 30%;
-							height: 30px;
-						}
+					input[type=submit] {
+						background: #eccdae;
+						color: #b46348;
+						font-size: 15px;
+						border: 1px solid #b46348;
+						border-radius: 10px;
+						width: 30%;
+						height: 30px;
+					}
 						
 .wrapper {
 	position: relative;
@@ -92,7 +117,13 @@ header {
 		border-top: 1px solid #b46348;
 		border-left: 1px solid #b46348;
 		border-right: 1px solid #b46348;
+		margin: 0 auto;
 	}
+
+		.all dd {
+			width: 85%;
+			margin: 10px auto;
+		}
 
 		.all .title:last-child {
 			border-bottom: 1px solid #b46348;
@@ -136,27 +167,43 @@ header {
 }
 
 .regestration {
-	width: 30%;
+	width: 100%;
 	margin: 30px auto;
 }
 
-	.regestration form input[type=text],
-	.regestration form input[type=email] {
-		width: 100%;
-		margin-bottom: 10px;
-		display: block;
+	.regestration form {
+		width: 40%;
+		margin: 0 auto;
 	}
-
-		.regestration form input[type=submit] {
-			display: block;
-			margin-top: 24px;
-			width: 100%;
-		}
 
 		.regestration form label {
 			display: block;
+			margin-top: 24px;
 		}
 
-			.regestration form input[type=radio] {
-				display: inline;		
-			}
+		.regestration form input[type=text],
+		.regestration form input[type=email] {
+			display: inline;
+			width: 100%;
+		}
+
+		.regestration form input[type=submit] {
+			display: block;
+			width: 100%;
+			margin-top: 24px;
+		}
+
+
+		.regestration form input[type=radio] {
+			display: inline;		
+		}
+
+		.regestration form input[type=password] {
+			width: 100%;
+			display: inline;		
+		}
+
+		.regestration form input[type=number] {
+			width: 100%;
+			display: inline;		
+		}
