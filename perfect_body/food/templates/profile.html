@@ -27,10 +27,10 @@
 					{% csrf_token %}
 					<label>
 						Name: 
-						<input type="text" name="name">
+						<input type="text" name="name" value="{{ name }}">
 					</label>
 					<label>
-						Password:
+						Password: 
 						<input type="password" name="password">
 					</label>		
 					<label>
@@ -39,23 +39,32 @@
 					</label>
 					<label>
 						Gender (M or F):
-						<input type="text" name="gender">
+						<input type="text" name="gender" value="{{ gender }}">
 					</label>
 					<label>
 						Years:
-						<input type="number" name="years">
+						<input type="number" name="years" value="{{ years }}">
 					</label>
 					<label>
 						Weight:
-						<input type="number" name="weight">
+						<input type="number" name="weight" value="{{ weight }}">
 					</label>
 					<label>
 						Height:
-						<input type="number" name="height">
+						<input type="number" name="height" value="{{ height }}">
+					</label>
+					<label>
+						BMI:
+						<input type="number" name="BMI" value="{{ BMI }}">
+					</label>
+					<label>
+						Max caloris:
+						<input type="number" name="max_cal" value="{{ max_cal }}">
 					</label>
 					<input type="submit" value="Save Changes">
 				</form>
 			</dd>
+
 
 			<dt class="title shop">	
 				<h2>Shop</h2>

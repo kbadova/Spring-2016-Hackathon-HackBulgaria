@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse_lazy, reverse
 
 from .models import FoodUser
 from .decorators import login_required, annon_required
-from .helper import crawl_food, get_user_post_attr, calculate_normal_BMI, max_calories
+from .helper import *
 
 
 def food(request):
@@ -25,7 +25,26 @@ def home(request):
 def profile(request):
     email = request.session['food_email']
     user = FoodUser.objects.get(email=email)
-    return render(request, 'profile.html', {'user': user})
+
+    name, _, _, gender, years, weight, height, BMI, max_cal = get_cls_get_attr(FoodUser, request)
+
+    if request.method == 'POST':
+        name, _, _, gender, years, weight, height = get_user_post_attr(request)
+
+        BMI = int(weight) / ((int(height) / 100)**2)
+        calc_cal = max_calories(int(height), int(weight), int(years), gender)
+        new_password = request.POST.get('new_password')
+
+        new_food_user = FoodUser.objects.filter(name=name)\
+                                        .update(password=new_password,
+                                                years=years,
+                                                weight=weight,
+                                                height=height,
+                                                BMI=BMI,
+                                                max_cal=calc_cal)
+
+        return render(request, 'profile.html', locals())
+    return render(request, 'profile.html', locals())
 
 
 def registration(request):

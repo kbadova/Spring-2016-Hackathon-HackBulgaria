@@ -83,6 +83,21 @@ def get_user_post_attr(request):
     return name, email, password, gender, years, weight, height
 
 
+def get_cls_get_attr(cls, request):
+    for field in cls.objects.all():
+        name = field.name
+        email = field.email
+        password = field.password
+        gender = field.gender
+        years = field.years
+        weight = field.weight
+        height = field.height
+        BMI = field.BMI
+        max_cal = field.max_cal
+
+    return name, email, password, gender, years, weight, height, BMI, max_cal
+
+
 NORMAL_BMI = {
     (19, 24): (19, 24),
     (25, 34): (20, 25),
