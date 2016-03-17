@@ -66,11 +66,51 @@ $(document).ready(function() {
   
   $("dt.profile").click();
 
-  $("form[name='change_password']").submit(function(e){
+  $("form[name='change_pass']").submit(function(e){
     e.preventDefault();
     var form = $(this);
     $.ajax({
-      url:'/saveProfile',
+      url:'/profile',
+      data:form.serialize(),
+      type: "POST",
+      success:function(data){        
+        console.log(data);
+      }
+    });
+  })
+
+  initAutocomplete();
+});
+
+$(document).ready(function() {
+  
+  $("dt.profile").click();
+
+  $("form[name='change']").submit(function(e){
+    e.preventDefault();
+    var form = $(this);
+    $.ajax({
+      url:'/profile',
+      data:form.serialize(),
+      type: "POST",
+      success:function(data){        
+        console.log(data);
+      }
+    });
+  })
+
+  initAutocomplete();
+});
+
+$(document).ready(function() {
+  
+  $("dt.menu").click();
+
+  $("form[name='breakfast']").submit(function(e){
+    e.preventDefault();
+    var form = $(this);
+    $.ajax({
+      url:'/profile',
       data:form.serialize(),
       type: "POST",
       success:function(data){        

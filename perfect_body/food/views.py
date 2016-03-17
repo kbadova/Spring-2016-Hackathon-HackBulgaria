@@ -21,9 +21,8 @@ def home(request):
     return render(request, 'home.html', {})
 
 
-@login_required(redirect_url=reverse_lazy('home'))
+# @login_required(redirect_url=reverse_lazy('home'))
 def profile(request):
-    # print(request.POST)
     email = request.session['food_email']
     user = FoodUser.objects.get(email=email)
     name = user.name
@@ -34,33 +33,29 @@ def profile(request):
     max_cal = user.max_cal
     password = request.POST.get('password')
 
-    if request.POST:
-        if request.POST.get('Change Password'):
-            print(request.POST)
-
     fields = Menu()
-    name, _, _, gender, years, weight, height, BMI, max_cal = get_cls_get_attr(FoodUser, request)
+
     if request.method == 'POST':
-        pass
-    if request.POST.get("Breakfast"):
+        if 'password' and 'new_password' in request.POST:
+            new_password = request.POST.get('new_password')
+            new_food_user = FoodUser.objects.filter(email=email)\
+                                            .update(password=new_password)
 
-        # name, _, _, gender, years, weight, height = get_user_post_attr(request)
+        if 'years' and 'weight' and 'height' in request.POST:
+            new_years = request.POST.get('years')
+            new_weight = request.POST.get('weight')
+            new_height = request.POST.get('height')
 
-        # BMI = int(weight) / ((int(height) / 100)**2)
-        # calc_cal = max_calories(int(height), int(weight), int(years), gender)
-        # new_password = request.POST.get('new_password')
+            BMI = int(new_weight) / ((int(new_height) / 100)**2)
+            max_cal = max_calories(int(new_height), int(new_weight), int(new_years), user.gender)
 
-        # new_food_user = FoodUser.objects.filter(name=name)\
-        #                                 .update(password=new_password,
-        #                                         years=years,
-        #                                         weight=weight,
-        #                                         height=height,
-        #                                         BMI=BMI,
-        #                                         max_cal=calc_cal)
-
-        print(request.POST.getlist('checks[]'))
-
-        return render(request, 'profile.html', locals())
+            new_food_user = FoodUser.objects.filter(email=email)\
+                                            .update(years=new_years,
+                                                    weight=new_weight,
+                                                    height=new_height,
+                                                    BMI=BMI,
+                                                    max_cal=max_cal)
+        # return render(request, 'profile.html', locals())
     return render(request, 'profile.html', locals())
 
 
@@ -113,17 +108,7 @@ def logout(request):
 
 
 def saveProfile(request):
-    print(request.user)
-    if request.POST:
-        if request.user.check_password(request.POST.get("password")):
-            return JsonResponse({'success': False})
-        else:
-            print(request.POST, request.user.email)
-            FoodUser.objects.filter(email=request.user.email).update(password=request.POST.get("new_password"))
-
-        return JsonResponse({'success': True})
-    else:
-        return JsonResponse({'success': False})
+    pass
 
 
 def Menu():

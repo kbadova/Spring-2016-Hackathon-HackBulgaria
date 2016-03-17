@@ -29,7 +29,7 @@
 			</dt>
 
 			<dd class="main_profile">
-				<form method="POST" action="" name="change_password">
+				<form method="POST" action="" name="change_pass">
 					{% csrf_token %}
 					<label>
 						Name: 
@@ -46,7 +46,7 @@
 					<input type="submit" value="Change Password">
 				</form>
 				
-				<form method="POST" action="">
+				<form method="POST" action="" name="change">
 					{% csrf_token %}
 					<label>
 						Years:
