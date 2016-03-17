@@ -77,7 +77,7 @@ def registration(request):
         else:
             error = "User already exists"
         return redirect(reverse('profile'))
-    return HttpResponse(error)
+    return render(request, 'register.html', locals())
 
 
 def login(request):
