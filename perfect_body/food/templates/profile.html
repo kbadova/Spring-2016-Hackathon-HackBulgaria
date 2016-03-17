@@ -65,7 +65,7 @@
 					<form class="bmi">
 						<p>BMI:</p>
 						<p>{{ BMI }}</p>
-						<p>Max caloris:</p>
+						<p>Max calories per day:</p>
 						<p>{{ max_cal }}</p>
 					</form>
 			</dd>
@@ -89,20 +89,14 @@
 			<dd class="main_menu">
 				<div class="breakfast">
 					<h2>Breakfast</h2>
-					<form method="POST" action="">
+					<form method="POST" action="" name="breakfast">
 						{% csrf_token %}
-						<label>
-							<input type="radio" value="first" name="breakfast">
-							bla
-						</label>
-						<label>
-							<input type="radio" value="first" name="breakfast">
-							bla
-						</label>
-						<label>
-							<input type="radio" value="first" name="breakfast">
-							bla
-						</label>
+						{% for field in fields %}
+							<input type="checkbox" name="checks[]" value="{{field}}">
+							{{field}}
+							<br></br>
+						{% endfor %}
+					<input type="submit" value="Submit", name="Breakfast">
 					</form>
 				</div>
 				<div class="lunch">

@@ -1,6 +1,8 @@
 import requests
 from .models import Food, HealthLabel, DietLabel, FoodUser
 
+FOOD_CHOICES = []
+
 
 def crawl_food(food_name, food_meal_time):
     payload = {'app_id': '10a834bf', 'app_key': '60a214d2bced63520a7dc3e77f7557f4', 'ingr': food_name}
