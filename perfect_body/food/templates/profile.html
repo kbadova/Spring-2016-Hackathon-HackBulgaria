@@ -29,12 +29,12 @@
 			</dt>
 
 			<dd class="main_profile">
-				<form method="POST" action="">
+				<form method="POST" action="" name="change_password">
 					{% csrf_token %}
 					<label>
 						Name: 
-						<input type="text" name="name" value="{{ name }}">
-					</label>
+						<p>{{ name }}</p>
+						</label>
 					<label>
 						Password: 
 						<input type="password" name="password">

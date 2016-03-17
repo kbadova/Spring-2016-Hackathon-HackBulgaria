@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse_lazy, reverse
 
@@ -26,24 +26,18 @@ def profile(request):
     email = request.session['food_email']
     user = FoodUser.objects.get(email=email)
 
-    name, _, _, gender, years, weight, height, BMI, max_cal = get_cls_get_attr(FoodUser, request)
+    name = user.name
+    years = user.years
+    weight = user.weight
+    height = user.height
+    BMI = user.BMI
+    max_cal = user.max_cal
+    password = request.POST.get('password')
 
-    if request.method == 'POST':
-        name, _, _, gender, years, weight, height = get_user_post_attr(request)
+    if request.POST:
+        if request.POST.get('Change Password'):
+            print(request.POST)
 
-        BMI = int(weight) / ((int(height) / 100)**2)
-        calc_cal = max_calories(int(height), int(weight), int(years), gender)
-        new_password = request.POST.get('new_password')
-
-        new_food_user = FoodUser.objects.filter(name=name)\
-                                        .update(password=new_password,
-                                                years=years,
-                                                weight=weight,
-                                                height=height,
-                                                BMI=BMI,
-                                                max_cal=calc_cal)
-
-        return render(request, 'profile.html', locals())
     return render(request, 'profile.html', locals())
 
 
@@ -93,3 +87,17 @@ def login(request):
 def logout(request):
     request.session.flush()
     return redirect(reverse('home'))
+
+
+def saveProfile(request):
+    print(request.user)
+    if request.POST:
+        if request.user.check_password(request.POST.get("password")):
+            return JsonResponse({'success': False})
+        else:
+            print(request.POST, request.user.email)
+            FoodUser.objects.filter(email=request.user.email).update(password=request.POST.get("new_password"))
+
+        return JsonResponse({'success': True})
+    else:
+        return JsonResponse({'success': False})

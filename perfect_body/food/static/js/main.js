@@ -9,7 +9,6 @@
 				google.maps.event.trigger(map, 'resize');
 
 		})
-
 	})();
 
 function initAutocomplete() {
@@ -64,5 +63,21 @@ function initAutocomplete() {
       }
 
 $(document).ready(function() {
-      initAutocomplete();
+  
+  $("dt.profile").click();
+
+  $("form[name='change_password']").submit(function(e){
+    e.preventDefault();
+    var form = $(this);
+    $.ajax({
+      url:'/saveProfile',
+      data:form.serialize(),
+      type: "POST",
+      success:function(data){        
+        console.log(data);
+      }
+    });
+  })
+
+  initAutocomplete();
 });
