@@ -2,7 +2,7 @@ import requests
 from .models import Food, HealthLabel, DietLabel
 
 
-def crawl_food(food_name):
+def crawl_food(food_name, food_meal_time):
     payload = {'app_id': '10a834bf', 'app_key': '60a214d2bced63520a7dc3e77f7557f4', 'ingr': food_name}
     r = requests.get('https://api.edamam.com/api/nutrition-data', params=payload)
     # if r.status_code != 200:
@@ -56,6 +56,7 @@ def crawl_food(food_name):
             protein_in_grams=food_protein_in_grams,
             fat_in_grams=food_fat_in_grams,
             carbohydrate_in_grams=food_carbohydrate_in_grams,
+            meal_time=food_meal_time,
         )
 
         for health_obj in health_objects:

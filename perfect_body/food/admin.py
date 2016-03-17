@@ -8,6 +8,7 @@ class FoodAdmin(admin.ModelAdmin):
         'weight',
         'quantity',
         'calories',
+        'meal_time'
     ]
 
 

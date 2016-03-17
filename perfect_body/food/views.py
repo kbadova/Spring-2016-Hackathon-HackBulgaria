@@ -10,7 +10,8 @@ from .helper import crawl_food, get_user_post_attr, calculate_normal_BMI
 def food(request):
     if request.method == "POST":
         food_name = request.POST.get('food')
-        crawl_food(food_name)
+        food_meal_time = request.POST.get('meal_time')
+        crawl_food(food_name, food_meal_time)
         return HttpResponse("ВЗЕХМЕ ХРАНАТА!")
     return render(request, 'food.html', {})
 

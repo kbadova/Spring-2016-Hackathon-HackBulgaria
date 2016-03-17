@@ -11,6 +11,7 @@ class Food(models.Model):
     protein_in_grams = models.FloatField()
     fat_in_grams = models.FloatField()
     carbohydrate_in_grams = models.FloatField()
+    meal_time = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name
