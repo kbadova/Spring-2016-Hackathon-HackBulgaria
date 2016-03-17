@@ -12,7 +12,7 @@ html {
 
 
 header {
-	height: 230px;
+	height: 100px;
 	background: #eccdae;
 	border-bottom: 3px solid #b46348;
 }
@@ -23,36 +23,37 @@ header {
 			margin: 0 auto;
 		}
 
-			.header_wrapper	img {
-				height: 227px;
-			}
-
-				.header_wrapper	img:first-child {
+				.header_wrapper	div:first-child {
 					position: absolute;
 					left: 9%;
 					max-width: 100px;
 				}
 
-				.header_wrapper img:nth-child(2){
+					.header_wrapper	div:first-child img,
+					.header_wrapper	div:last-child img{
+						height: 97px;
+					}
+
+				.header_wrapper div:nth-child(2){
 					position: absolute;
-					left: 33%;
-					top: 19px;
-					width: 31%;
-					height: 50px;
+					left: 31%;
+					top: 16px;
+					max-width: 34%;
+					min-height: 50px;
 				}
 
 
-				.header_wrapper	img:last-child {
+				.header_wrapper	div:last-child {
 					position: absolute;
 					right: 9%;
 					top: 0;
 					max-width: 100px;
 				}
 
-				.header_wrapper a:active,
-				.header_wrapper a:hover, 
-				.header_wrapper a:link,
-				.header_wrapper a {
+				.hello:active,
+				.hello:hover, 
+				.hello:link,
+				.hello {
 					position: absolute;
 					color: #b46348;
 					text-decoration: none;
@@ -60,8 +61,7 @@ header {
 					border: 1px solid #b46348;
 					border-radius: 5px; 
 					padding: 5px;
-					top: 150px;
-					left: 45%;
+					right: 5%;
 				}
 
 				.header_wrapper p {
@@ -110,15 +110,25 @@ header {
 	margin: 30px auto;
 }
 
+	.hello_name {
+		margin-left: 5%;
+		font-size: 30px;
+		font-style: italic;
+	}
+
 	.title {
 		width: 90%;
 		height: 50px;
 		background: #eccdae;
-		border-top: 1px solid #b46348;
-		border-left: 1px solid #b46348;
-		border-right: 1px solid #b46348;
+		border: 1px solid #b46348;
+/*		border-left: 1px solid #b46348;
+		border-right: 1px solid #b46348;*/
 		margin: 0 auto;
 		cursor: pointer;
+	}
+
+	.all {
+		margin-top: 30px;
 	}
 
 		.all dd {
@@ -161,6 +171,8 @@ header {
 	.main_profile input {
 		display: block;
 		margin-bottom: 10px;
+		border: 1px solid #b46348;
+		border-radius: 3px;
 	}
 
 	.main_profile p {
@@ -169,9 +181,13 @@ header {
 
 		.bmi {
 			position: absolute;
-		    top: 67px;
+		    top: 115px;
 		    right: 18%;
 		}
+
+	.main_profile input[type=submit] {
+		width: 100%;
+	}
 
 
 .main_shop {
@@ -230,6 +246,15 @@ header {
 	width: 100%;
 	margin: 30px auto;
 }
+.login_wrapper {
+	width: 70%;
+	margin: 0 auto
+}
+
+.info,
+.login {
+	display: inline;
+}
 
 	.regestration h2 {
 		width: 100px;
@@ -242,17 +267,43 @@ header {
 		margin: 0 auto;
 	}
 
-		.regestration form label {
+	.login_wrapper form {
+		width: 25%;
+		margin: 0 auto;
+	}
+
+		.regestration form label,
+		.login_wrapper form label {
 			display: block;
 			margin-top: 24px;
 		}
 
 		.regestration form input[type=text],
-		.regestration form input[type=email] {
+		.regestration form input[type=email],
+		.login_wrapper form input[type=text],
+		.login_wrapper form input[type=email] {
 			display: inline;
 			width: 100%;
+			margin: 0 auto;
 		}
 
+		.login_wrapper form input[type=submit] {
+			display: inline-block;
+			width: 50%;
+			margin-top: 24px;
+			margin-right: 10px;
+		}
+
+		.login_wrapper a:active,
+		.login_wrapper a:hover,
+		.login_wrapper a:link,
+		.login_wrapper a {
+			color: #b46348;
+			text-decoration: none;
+			display: inline;
+		}
+		
+		
 		.regestration form input[type=submit] {
 			display: block;
 			width: 100%;
@@ -264,7 +315,8 @@ header {
 			display: inline;		
 		}
 
-		.regestration form input[type=password] {
+		.regestration form input[type=password],
+		.login_wrapper form input[type=password] {
 			width: 100%;
 			display: inline;		
 		}

@@ -8,15 +8,21 @@
 </head>
 <header>
 	<div class="header_wrapper">	
-		<img src="{% static "images/logo.png" %} ">
-		<img src="{% static "images/logo_text.png" %} ">
-		<p>Hello, {{ user.name }} &#9786;</p>
-		<a href="/logout">Logout</a>
-		<img src="{% static "images/logo.png" %}">
+		<div>
+			<img src="{% static "images/logo.png" %}">
+		</div>
+		<div>
+			<img src="{% static "images/logo_text.png" %}">
+		</div>
+		<div>
+			<img src="{% static "images/logo.png" %}">
+		</div>
 	</div>
 </header>
 <body>
 	<div class="wrapper">	
+		<a href="/logout" class="hello">Logout</a>
+		<p class="hello_name">Hello, {{ user.name }} &#9786;</p>
 		<dl class="all">
 			<dt class="title profile">	
 				<h2>Profile</h2>
@@ -37,7 +43,7 @@
 						New password:
 						<input type="password" name="new_password">
 					</label>
-					<input type="submit" value="Change">
+					<input type="submit" value="Change Password">
 				</form>
 				
 				<form method="POST" action="">
@@ -54,7 +60,7 @@
 						Height:
 						<input type="number" name="height" value="{{ height }}">
 					</label>
-					<input type="submit" value="Change">
+					<input type="submit" value="Change Data">
 				</form>
 					<form class="bmi">
 						<p>BMI:</p>
