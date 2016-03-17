@@ -29,12 +29,12 @@
 			</dt>
 
 			<dd class="main_profile">
-				<form method="POST" action="">
+				<form method="POST" action="" name="change_password">
 					{% csrf_token %}
 					<label>
 						Name: 
-						<input type="text" name="name" value="{{ name }}">
-					</label>
+						<p>{{ name }}</p>
+						</label>
 					<label>
 						Password: 
 						<input type="password" name="password">
@@ -89,20 +89,14 @@
 			<dd class="main_menu">
 				<div class="breakfast">
 					<h2>Breakfast</h2>
-					<form method="POST" action="">
+					<form method="POST" action="" name="breakfast">
 						{% csrf_token %}
-						<label>
-							<input type="radio" value="first">
-							bla
-						</label>
-						<label>
-							<input type="radio" value="first">
-							bla
-						</label>
-						<label>
-							<input type="radio" value="first">
-							bla
-						</label>
+						{% for field in fields %}
+							<input type="checkbox" name="checks[]" value="{{field}}">
+							{{field}}
+							<br></br>
+						{% endfor %}
+					<input type="submit" value="Submit", name="Breakfast">
 					</form>
 				</div>
 				<div class="lunch">
