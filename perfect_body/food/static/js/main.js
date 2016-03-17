@@ -6,8 +6,7 @@
 					.slideDown(300)
 					.siblings('dd')
 						.slideUp(300);	
-
-			google.maps.event.trigger(map, 'resize');
+				google.maps.event.trigger(map, 'resize');
 
 		})
 
@@ -65,6 +64,5 @@ function initAutocomplete() {
       }
 
 $(document).ready(function() {
-
       initAutocomplete();
 });
