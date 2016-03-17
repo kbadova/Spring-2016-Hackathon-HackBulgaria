@@ -65,7 +65,7 @@
 					<form class="bmi">
 						<p>BMI:</p>
 						<p>{{ BMI }}</p>
-						<p>Max caloris:</p>
+						<p>Max calories per day:</p>
 						<p>{{ max_cal }}</p>
 					</form>
 			</dd>
@@ -92,15 +92,15 @@
 					<form method="POST" action="">
 						{% csrf_token %}
 						<label>
-							<input type="radio" value="first" name="breakfast">
+							<input type="radio" value="first">
 							bla
 						</label>
 						<label>
-							<input type="radio" value="first" name="breakfast">
+							<input type="radio" value="first">
 							bla
 						</label>
 						<label>
-							<input type="radio" value="first" name="breakfast">
+							<input type="radio" value="first">
 							bla
 						</label>
 					</form>

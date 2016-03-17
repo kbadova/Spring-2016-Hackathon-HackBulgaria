@@ -181,7 +181,7 @@ header {
 
 		.bmi {
 			position: absolute;
-		    top: 115px;
+		    top: 120px;
 		    right: 18%;
 		}
 
@@ -253,7 +253,13 @@ header {
 
 .info,
 .login {
-	display: inline;
+	width: 50%;
+	float: left;
+}
+
+.info {
+	margin-top: 30px;
+	
 }
 
 	.regestration h2 {
@@ -268,7 +274,7 @@ header {
 	}
 
 	.login_wrapper form {
-		width: 25%;
+		width: 65%;
 		margin: 0 auto;
 	}
 
