@@ -40,6 +40,7 @@ class FoodUserAdmin(admin.ModelAdmin):
                     'years',
                     'weight',
                     'height',
-                    'BMI',)
+                    'BMI',
+                    'max_cal')
 
 admin.site.register(FoodUser, FoodUserAdmin)

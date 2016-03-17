@@ -1,10 +1,12 @@
 import requests
-from .models import Food, HealthLabel, DietLabel
+from .models import Food, HealthLabel, DietLabel, FoodUser
 
 
 def crawl_food(food_name):
-    payload = {'app_id': '10a834bf', 'app_key': '60a214d2bced63520a7dc3e77f7557f4', 'ingr': food_name}
-    r = requests.get('https://api.edamam.com/api/nutrition-data', params=payload)
+    payload = {'app_id': '10a834bf', 'app_key':
+               '60a214d2bced63520a7dc3e77f7557f4', 'ingr': food_name}
+    r = requests.get(
+        'https://api.edamam.com/api/nutrition-data', params=payload)
     # if r.status_code != 200:
     #     raise "Request failed!"
     result = r.json()
@@ -18,17 +20,20 @@ def crawl_food(food_name):
     if 'PROCNT' not in result['ingredients'][0]['parsed'][0]['nutrients']:
         food_protein_in_grams = 0.0
     else:
-        food_protein_in_grams = result['ingredients'][0]['parsed'][0]['nutrients']['PROCNT']['quantity']
+        food_protein_in_grams = result['ingredients'][0][
+            'parsed'][0]['nutrients']['PROCNT']['quantity']
         food_protein_in_grams = round(food_protein_in_grams, 2)
     if 'PROCNT' not in result['ingredients'][0]['parsed'][0]['nutrients']:
         food_fat_in_grams = 0.0
     else:
-        food_fat_in_grams = result['ingredients'][0]['parsed'][0]['nutrients']['FAT']['quantity']
+        food_fat_in_grams = result['ingredients'][0][
+            'parsed'][0]['nutrients']['FAT']['quantity']
         food_fat_in_grams = round(food_fat_in_grams, 2)
     if 'CHOCDF' not in result['ingredients'][0]['parsed'][0]['nutrients']:
         food_carbohydrate_in_grams = 0.0
     else:
-        food_carbohydrate_in_grams = result['ingredients'][0]['parsed'][0]['nutrients']['CHOCDF']['quantity']
+        food_carbohydrate_in_grams = result['ingredients'][
+            0]['parsed'][0]['nutrients']['CHOCDF']['quantity']
         food_carbohydrate_in_grams = round(food_carbohydrate_in_grams, 2)
 
     health_label = result['healthLabels']
@@ -97,4 +102,17 @@ def calculate_normal_BMI(years, bmi):
             return 'Your BMI is normal.'
         else:
             return 'Your BMI is not normal. Normal BMI is between {} and {}.'\
-                  .format(current_bmi[0], current_bmi[1])
+                .format(current_bmi[0], current_bmi[1])
+
+
+def max_calories(height, weight, years, gender):
+
+    max_cal = 0
+
+    if gender == 'm':
+        max_cal = 66 + (13.7 * weight) + (5 * height) - (6.8 * years)
+
+    else:
+        max_cal = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * years)
+
+    return max_cal

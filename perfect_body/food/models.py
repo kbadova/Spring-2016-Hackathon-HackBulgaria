@@ -40,6 +40,7 @@ class FoodUser(models.Model):
     weight = models.IntegerField(default=0)
     height = models.IntegerField(default=0)
     BMI = models.FloatField(default=0)
+    max_cal = models.FloatField(default=0)
 
     @classmethod
     def exists(cls, email):

@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse_lazy, reverse
 
 from .models import FoodUser
 from .decorators import login_required, annon_required
-from .helper import crawl_food, get_user_post_attr, calculate_normal_BMI
+from .helper import crawl_food, get_user_post_attr, calculate_normal_BMI, max_calories
 
 
 def food(request):
@@ -35,6 +35,7 @@ def registration(request):
         if not FoodUser.exists(email):
             calc_BMI = int(weight) / ((int(height) / 100)**2)
             print(calculate_normal_BMI(int(years), calc_BMI))
+            calc_cal = max_calories(int(height), int(weight), int(years), gender)
             u = FoodUser(
                 name=name,
                 email=email,
@@ -43,9 +44,11 @@ def registration(request):
                 years=years,
                 weight=weight,
                 height=height,
-                BMI=calc_BMI
+                BMI=calc_BMI,
+                max_cal=calc_cal
             )
             u.save()
+
         else:
             error = "User already exists"
         return redirect(reverse('profile'))
