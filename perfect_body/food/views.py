@@ -134,7 +134,7 @@ def breakfast(request):
     if request.method == 'POST':
         if 'checks[]' in request.POST:
 
-            data = get_quantity_of_food(user, request.POST.getlist('checks[]'))
+            data = get_quantity_of_food(user, request.POST.getlist('checks[]'), 45)
             foods = request.POST.getlist('checks[]')
             for food_name in foods:
                 food = Food.objects.get(name=food_name)
@@ -149,7 +149,7 @@ def lunch(request):
     user = FoodUser.objects.get(email=email)
     if request.method == 'POST':
         if 'checks[]' in request.POST:
-            data = get_quantity_of_food(user, request.POST.getlist('checks[]'))
+            data = get_quantity_of_food(user, request.POST.getlist('checks[]'), 35)
             foods = request.POST.getlist('checks[]')
             for food_name in foods:
                 food = Food.objects.get(name=food_name)
@@ -165,7 +165,7 @@ def dinner(request):
     user = FoodUser.objects.get(email=email)
     if request.method == 'POST':
         if 'checks[]' in request.POST:
-            data = get_quantity_of_food(user, request.POST.getlist('checks[]'))
+            data = get_quantity_of_food(user, request.POST.getlist('checks[]'), 25)
             foods = request.POST.getlist('checks[]')
             for food_name in foods:
                 food = Food.objects.get(name=food_name)
@@ -182,24 +182,43 @@ def Menu(meal):
     return foods
 
 
-def get_quantity_of_food(user, foods):
+def get_quantity_of_food(user, foods, percent):
+
     meal = {}
     filtered_foods = []
-    breakfast_calories = (40 / 100.0) * user.max_cal
-    print(breakfast_calories)
+    breakfast_calories = percent / 100.0 * user.max_cal
     foods_len = len(foods)
     for food_name in foods:
         item = Food.objects.get(name=food_name)
         filtered_foods.append(item)
     for food in filtered_foods:
         while True:
-            grams_per_food = random.randrange(0, 400)
-            print("cal za 100gr" + str(food.calories / 100.0) + "name" + str(food.name))
+            grams_per_food = random.randrange(30, 450)
             cal_per_food = grams_per_food * (food.calories / 100.0)
+
             if cal_per_food <= breakfast_calories - (foods_len - 1) * 30:
                 foods_len -= 1
-                breakfast_calories -= grams_per_food
-                meal[food.name] = grams_per_food
+                breakfast_calories -= cal_per_food
+                meal[food] = grams_per_food
+
                 break
-    print(meal)
+
+    meal = brkr(user, foods, meal, breakfast_calories)
+
     return meal
+
+
+def brkr(user, foods, meal, breakfast_calories):
+
+    new_meal = {}
+    while breakfast_calories > 20:
+        for m in meal:
+            r = random.randrange(1, 10)
+            meal[m] += r
+            breakfast_calories -= r * (m.calories / 100.0)
+            if breakfast_calories < r * (m.calories / 100.0):
+                break
+
+    for m in meal:
+        new_meal[m.name] = meal[m]
+    return new_meal
