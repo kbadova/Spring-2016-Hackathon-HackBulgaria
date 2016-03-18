@@ -145,6 +145,33 @@ $(document).ready(function() {
     });
   })
 
+  $("form[name='lunch']").submit(function(e){
+    e.preventDefault();
+    var form = $(this);
+    $.ajax({
+      url:'/lunch',
+      data:form.serialize(),
+      type: "POST",
+      success:function(data){        
+        console.log(data);
+      }
+    });
+  })
+
+  $("form[name='dinner']").submit(function(e){
+    e.preventDefault();
+    var form = $(this);
+    $.ajax({
+      url:'/dinner',
+      data:form.serialize(),
+      type: "POST",
+      success:function(data){        
+        console.log(data);
+      }
+    });
+  })
+
+
   initAutocomplete();
 
 });
