@@ -29,7 +29,7 @@
 			</dt>
 
 			<dd class="main_profile">
-				<form method="POST" action="" name="change_pass">
+				<form method="POST" action="" name="change_password">
 					{% csrf_token %}
 					<label>
 						Name: 
@@ -46,7 +46,7 @@
 					<input type="submit" value="Change Password">
 				</form>
 				
-				<form method="POST" action="" name="change">
+				<form method="POST" action="" name="change_data">
 					{% csrf_token %}
 					<label>
 						Years:
@@ -64,9 +64,9 @@
 				</form>
 					<form class="bmi">
 						<p>BMI:</p>
-						<p>{{ BMI }}</p>
+						<p id="bmi">{{ BMI }}</p>
 						<p>Max calories per day:</p>
-						<p>{{ max_cal }}</p>
+						<p id="cal">{{ max_cal }}</p>
 					</form>
 			</dd>
 

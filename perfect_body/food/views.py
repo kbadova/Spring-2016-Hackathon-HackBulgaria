@@ -21,7 +21,7 @@ def home(request):
     return render(request, 'home.html', {})
 
 
-# @login_required(redirect_url=reverse_lazy('home'))
+@login_required(redirect_url=reverse_lazy('home'))
 def profile(request):
     email = request.session['food_email']
     user = FoodUser.objects.get(email=email)
@@ -35,27 +35,6 @@ def profile(request):
 
     fields = Menu()
 
-    if request.method == 'POST':
-        if 'password' and 'new_password' in request.POST:
-            new_password = request.POST.get('new_password')
-            new_food_user = FoodUser.objects.filter(email=email)\
-                                            .update(password=new_password)
-
-        if 'years' and 'weight' and 'height' in request.POST:
-            new_years = request.POST.get('years')
-            new_weight = request.POST.get('weight')
-            new_height = request.POST.get('height')
-
-            BMI = int(new_weight) / ((int(new_height) / 100)**2)
-            max_cal = max_calories(int(new_height), int(new_weight), int(new_years), user.gender)
-
-            new_food_user = FoodUser.objects.filter(email=email)\
-                                            .update(years=new_years,
-                                                    weight=new_weight,
-                                                    height=new_height,
-                                                    BMI=BMI,
-                                                    max_cal=max_cal)
-        # return render(request, 'profile.html', locals())
     return render(request, 'profile.html', locals())
 
 
@@ -107,8 +86,38 @@ def logout(request):
     return redirect(reverse('home'))
 
 
-def saveProfile(request):
-    pass
+def changePassword(request):
+    email = request.session['food_email']
+    if request.method == 'POST':
+        if 'password' and 'new_password' in request.POST:
+            new_password = request.POST.get('new_password')
+            new_food_user = FoodUser.objects.filter(email=email)\
+                                            .update(password=new_password)
+
+            return JsonResponse({"success": True})
+    return JsonResponse({"success": False})
+
+
+def changeData(request):
+    email = request.session['food_email']
+    user = FoodUser.objects.get(email=email)
+    if request.method == 'POST':
+        if 'years' and 'weight' and 'height' in request.POST:
+            new_years = request.POST.get('years')
+            new_weight = request.POST.get('weight')
+            new_height = request.POST.get('height')
+
+            BMI = int(new_weight) / ((int(new_height) / 100)**2)
+            max_cal = max_calories(int(new_height), int(new_weight), int(new_years), user.gender)
+
+            new_food_user = FoodUser.objects.filter(email=email)\
+                                            .update(years=new_years,
+                                                    weight=new_weight,
+                                                    height=new_height,
+                                                    BMI=BMI,
+                                                    max_cal=max_cal)
+            return JsonResponse({"max_cal": max_cal, "BMI": BMI})
+    return JsonResponse({"success": False})
 
 
 def Menu():

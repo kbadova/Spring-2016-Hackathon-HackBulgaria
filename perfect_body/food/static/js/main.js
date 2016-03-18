@@ -65,32 +65,12 @@ function initAutocomplete() {
 $(document).ready(function() {
   
   $("dt.profile").click();
-
-  $("form[name='change_pass']").submit(function(e){
-    e.preventDefault();
-    var form = $(this);
-    $.ajax({
-      url:'/profile',
-      data:form.serialize(),
-      type: "POST",
-      success:function(data){        
-        console.log(data);
-      }
-    });
-  })
-
-  initAutocomplete();
-});
-
-$(document).ready(function() {
   
-  $("dt.profile").click();
-
-  $("form[name='change']").submit(function(e){
+  $("form[name='change_password']").submit(function(e){
     e.preventDefault();
     var form = $(this);
     $.ajax({
-      url:'/profile',
+      url:'/change_password',
       data:form.serialize(),
       type: "POST",
       success:function(data){        
@@ -99,25 +79,33 @@ $(document).ready(function() {
     });
   })
 
-  initAutocomplete();
-});
-
-$(document).ready(function() {
-  
-  $("dt.menu").click();
-
-  $("form[name='breakfast']").submit(function(e){
+  $("form[name='change_data']").submit(function(e){
     e.preventDefault();
     var form = $(this);
     $.ajax({
-      url:'/profile',
+      url:'/change_data',
       data:form.serialize(),
       type: "POST",
       success:function(data){        
         console.log(data);
+        $("#bmi").html(data['BMI']);
+        $("#cal").html(data['max_cal']);
       }
     });
   })
+
+  // $("form[name='breakfast']").submit(function(e){
+  //   e.preventDefault();
+  //   var form = $(this);
+  //   $.ajax({
+  //     url:'/profile',
+  //     data:form.serialize(),
+  //     type: "POST",
+  //     success:function(data){        
+  //       console.log(data);
+  //     }
+  //   });
+  // })
 
   initAutocomplete();
 });
