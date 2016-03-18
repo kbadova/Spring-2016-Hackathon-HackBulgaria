@@ -38,15 +38,6 @@ def profile(request):
     lunch_fields = Menu("lunch")
     dinner_fields = Menu("dinner")
 
-    # if request.POST.get("Lunch"):
-    #     print(request.POST.getlist('checks[]'))
-
-    #     return render(request, 'profile.html', locals())
-    # if request.POST.get("Dinner"):
-    #     print(request.POST.getlist('checks[]'))
-
-    #     return render(request, 'profile.html', locals())
-
     return render(request, 'profile.html', locals())
 
 
@@ -138,34 +129,34 @@ def breakfast(request):
     if request.method == 'POST':
         if 'checks[]' in request.POST:
 
-            get_quantity_of_food_breakfast(user, request.POST.getlist('checks[]'))
+            data = get_quantity_of_food(user, request.POST.getlist('checks[]'))
 
-            return JsonResponse({"success": True})
+            return JsonResponse({"success": True, "data": data})
     return JsonResponse({"success": False})
 
 
-# def lunch(request):
-#     email = request.session['food_email']
-#     user = FoodUser.objects.get(email=email)
-#     if request.method == 'POST':
-#         if 'checks[]' in request.POST:
+def lunch(request):
+    email = request.session['food_email']
+    user = FoodUser.objects.get(email=email)
+    if request.method == 'POST':
+        if 'checks[]' in request.POST:
 
-#             get_quantity_of_food_lunch(user, request.POST.getlist('checks[]'))
+            data = get_quantity_of_food(user, request.POST.getlist('checks[]'))
 
-#             return JsonResponse({"success": True})
-#     return JsonResponse({"success": False})
+            return JsonResponse({"success": True, "data": data})
+    return JsonResponse({"success": False})
 
 
-# def dinner(request):
-#     email = request.session['food_email']
-#     user = FoodUser.objects.get(email=email)
-#     if request.method == 'POST':
-#         if 'checks[]' in request.POST:
+def dinner(request):
+    email = request.session['food_email']
+    user = FoodUser.objects.get(email=email)
+    if request.method == 'POST':
+        if 'checks[]' in request.POST:
 
-#             get_quantity_of_food_dinner(user, request.POST.getlist('checks[]'))
+            data = get_quantity_of_food(user, request.POST.getlist('checks[]'))
 
-#             return JsonResponse({"success": True})
-#     return JsonResponse({"success": False})
+            return JsonResponse({"success": True, "data": data})
+    return JsonResponse({"success": False})
 
 
 def Menu(meal):
@@ -176,7 +167,7 @@ def Menu(meal):
     return foods
 
 
-def get_quantity_of_food_breakfast(user, foods):
+def get_quantity_of_food(user, foods):
     meal = {}
     filtered_foods = []
     breakfast_calories = (40 / 100.0) * user.max_cal
