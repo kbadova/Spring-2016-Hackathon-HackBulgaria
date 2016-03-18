@@ -40,6 +40,8 @@ def profile(request):
     lunch_fields = Menu("lunch")
     dinner_fields = Menu("dinner")
 
+    history = History.objects.filter(user=user).order_by('date')
+
     return render(request, 'profile.html', locals())
 
 
@@ -201,11 +203,3 @@ def get_quantity_of_food(user, foods):
                 break
     print(meal)
     return meal
-
-
-def history(user, foods):
-    foods = breakfast()
-    email = request.session['food_email']
-    date = History.objects.filter(email=email)
-    for food in foods:
-        return render(request, 'profile.html', locals())

@@ -140,10 +140,10 @@
 						<th>Foods</th>
 					</tr>
 
-					{% for field in breakfast_fields%}
+					{% for field in history %}
 						<tr>
-							<th> {{ history.date }}</th>
-							<th> {{ food }}</th>
+							<th> {{ field.date }}</th>
+							<th> {{ field.foods.name }}</th>
 						</tr>
 					{% endfor%}
 
