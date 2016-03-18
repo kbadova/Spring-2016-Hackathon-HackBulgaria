@@ -64,9 +64,10 @@ class FoodUser(models.Model):
 
 
 class History(models.Model):
-    email = models.ForeignKey(
+    user = models.ForeignKey(
         'FoodUser',
         on_delete=models.CASCADE,
+        null=True
     )
     date = models.DateTimeField(auto_now_add=True)
     foods = models.ForeignKey(

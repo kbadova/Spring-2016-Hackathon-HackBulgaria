@@ -2,9 +2,11 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse_lazy, reverse
 import random
-from .models import FoodUser
+from .models import *
 from .decorators import login_required, annon_required
 from .helper import *
+
+from django.views.decorators.csrf import csrf_exempt
 
 
 def food(request):
@@ -123,6 +125,7 @@ def changeData(request):
     return JsonResponse({"success": False})
 
 
+@csrf_exempt
 def breakfast(request):
     email = request.session['food_email']
     user = FoodUser.objects.get(email=email)
@@ -130,31 +133,41 @@ def breakfast(request):
         if 'checks[]' in request.POST:
 
             data = get_quantity_of_food(user, request.POST.getlist('checks[]'))
-
+            foods = request.POST.getlist('checks[]')
+            for food_name in foods:
+                food = Food.objects.get(name=food_name)
+                History.objects.create(user=user, foods=food)
             return JsonResponse({"success": True, "data": data})
     return JsonResponse({"success": False})
 
 
+@csrf_exempt
 def lunch(request):
     email = request.session['food_email']
     user = FoodUser.objects.get(email=email)
     if request.method == 'POST':
         if 'checks[]' in request.POST:
-
             data = get_quantity_of_food(user, request.POST.getlist('checks[]'))
+            foods = request.POST.getlist('checks[]')
+            for food_name in foods:
+                food = Food.objects.get(name=food_name)
+                History.objects.create(user=user, foods=food)
 
             return JsonResponse({"success": True, "data": data})
     return JsonResponse({"success": False})
 
 
+@csrf_exempt
 def dinner(request):
     email = request.session['food_email']
     user = FoodUser.objects.get(email=email)
     if request.method == 'POST':
         if 'checks[]' in request.POST:
-
             data = get_quantity_of_food(user, request.POST.getlist('checks[]'))
-
+            foods = request.POST.getlist('checks[]')
+            for food_name in foods:
+                food = Food.objects.get(name=food_name)
+                History.objects.create(user=user, foods=food)
             return JsonResponse({"success": True, "data": data})
     return JsonResponse({"success": False})
 

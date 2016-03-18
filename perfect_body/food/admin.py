@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Food, DietLabel, HealthLabel, FoodUser
+from .models import Food, DietLabel, HealthLabel, FoodUser, History
 
 
 class FoodAdmin(admin.ModelAdmin):
@@ -13,6 +13,17 @@ class FoodAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Food, FoodAdmin)
+
+
+class HistoryAdmin(admin.ModelAdmin):
+    list_display = [
+        'user',
+        'date',
+        'foods'
+    ]
+
+
+admin.site.register(History, HistoryAdmin)
 
 
 class DietLabelAdmin(admin.ModelAdmin):
