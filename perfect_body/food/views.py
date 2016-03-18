@@ -25,6 +25,7 @@ def home(request):
 def profile(request):
     email = request.session['food_email']
     user = FoodUser.objects.get(email=email)
+
     name = user.name
     years = user.years
     weight = user.weight
@@ -33,8 +34,51 @@ def profile(request):
     max_cal = user.max_cal
     password = request.POST.get('password')
 
+<<<<<<< HEAD
     fields = Menu()
 
+=======
+    if request.POST:
+        if request.POST.get('Change Password'):
+            print(request.POST)
+
+    breakfast_fields = Menu("breakfast")
+    lunch_fields = Menu("lunch")
+    dinner_fields = Menu("dinner")
+
+    name, _, _, gender, years, weight, height, BMI, max_cal = get_cls_get_attr(FoodUser, request)
+    if request.method == 'POST':
+        pass
+    if request.POST.get("Breakfast"):
+
+        # name, _, _, gender, years, weight, height = get_user_post_attr(request)
+
+        # BMI = int(weight) / ((int(height) / 100)**2)
+        # calc_cal = max_calories(int(height), int(weight), int(years), gender)
+        # new_password = request.POST.get('new_password')
+
+        # new_food_user = FoodUser.objects.filter(name=name)\
+        #                                 .update(password=new_password,
+        #                                         years=years,
+        #                                         weight=weight,
+        #                                         height=height,
+        #                                         BMI=BMI,
+        #                                         max_cal=calc_cal)
+
+        print(request.POST.getlist('checks[]'))
+        get_quantity_of_food_breakfast(user, request.POST.getlist('checks[]'))
+        return render(request, 'profile.html', locals())
+
+
+    if request.POST.get("Lunch"):
+        print(request.POST.getlist('checks[]'))
+
+        return render(request, 'profile.html', locals())
+    if request.POST.get("Dinner"):
+        print(request.POST.getlist('checks[]'))
+
+        return render(request, 'profile.html', locals())
+>>>>>>> d9c7f7c11535f62545d199c0fcfaa45161a969ad
     return render(request, 'profile.html', locals())
 
 
@@ -120,9 +164,32 @@ def changeData(request):
     return JsonResponse({"success": False})
 
 
-def Menu():
-    foods = random.sample(set(Food.objects.filter(meal_time='breakfast')), 5)
+def Menu(meal):
+    foods = random.sample(set(Food.objects.filter(meal_time=meal)), 5)
     global FOOD_CHOICES
     FOOD_CHOICES = foods
     # print(FOOD_CHOICES)
     return foods
+
+
+def get_quantity_of_food_breakfast(user, foods):
+    meal = {}
+    filtered_foods = []
+    breakfast_calories = (40 / 100.0) * user.max_cal
+    print(breakfast_calories)
+    foods_len = len(foods)
+    for food_name in foods:
+        item = Food.objects.get(name=food_name)
+        filtered_foods.append(item)
+    for food in filtered_foods:
+        while True:
+            grams_per_food = random.randrange(0, 400)
+            print("cal za 100gr" + str(food.calories / 100.0) + "name" + str(food.name))
+            cal_per_food = grams_per_food * (food.calories / 100.0)
+            if cal_per_food <= breakfast_calories - (foods_len-1)*30:
+                foods_len -= 1
+                breakfast_calories -= grams_per_food
+                meal[food.name] = grams_per_food
+                break
+    print(meal)
+    return meal
