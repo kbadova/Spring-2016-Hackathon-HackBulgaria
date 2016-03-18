@@ -9,7 +9,20 @@
 				google.maps.event.trigger(map, 'resize');
 
 		})
+    if(window.oppened_tab.length > 0){
+      $("dt."+window.oppened_tab).click();
+    }
 	})();
+
+function reloadWithGetParam(param){
+  var url = window.location.href;    
+  if (url.indexOf('?') > -1){
+     url += '&'+param;
+  }else{
+     url += '?'+param;
+  }
+  window.location.href = url;
+}
 
 function success(position) {
     console.log("init2")
@@ -102,8 +115,10 @@ $(document).ready(function() {
       }
 
   
-  $("dt.profile").click();
-  
+  $("dt.history").click(function(){
+    reloadWithGetParam("tab=history");
+  });
+
   $("form[name='change_password']").submit(function(e){
     e.preventDefault();
     var form = $(this);
@@ -194,7 +209,6 @@ $(document).ready(function() {
       }
     });
   })
-
 
   initAutocomplete();
 
