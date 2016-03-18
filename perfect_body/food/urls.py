@@ -13,6 +13,6 @@ urlpatterns = [
     url(r'^change_password$', changePassword, name='change_password'),
     url(r'^change_data$', changeData, name='change_data'),
     url(r'^breakfast$', breakfast, name='Breakfast'),
-    # url(r'^lunch$', lunch, name='lunch'),
-    # url(r'^dinner$', dinner, name='dinner'),
+    url(r'^lunch$', lunch, name='lunch'),
+    url(r'^dinner$', dinner, name='dinner'),
 ]

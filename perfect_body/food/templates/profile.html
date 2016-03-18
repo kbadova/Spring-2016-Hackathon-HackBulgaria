@@ -93,9 +93,10 @@
 					<form method="POST" action="" name="breakfast">
 						{% csrf_token %}
 						{% for field in breakfast_fields %}
-							<input type="checkbox" name="checks[]" value="{{field}}">
-							{{field}}
-							<br></br>
+							<div class='fields-container'>
+								<input type="checkbox" name="checks[]" value="{{field}}">
+								{{field}}
+							</div>
 						{% endfor %}
 					<input type="submit" value="Submit", name="Breakfast">
 					</form>
@@ -105,9 +106,10 @@
 					<form method="POST" action="" name="lunch">
 						{% csrf_token %}
 						{% for field in lunch_fields %}
-							<input type="checkbox" name="checks[]" value="{{field}}">
-							{{field}}
-							<br></br>
+							<div class='fields-container'>
+								<input type="checkbox" name="checks[]" value="{{field}}">
+								{{field}}
+							</div>
 						{% endfor %}
 					<input type="submit" value="Submit", name="Lunch">
 					</form>
@@ -117,9 +119,10 @@
 					<form method="POST" action="" name="dinner">
 						{% csrf_token %}
 						{% for field in dinner_fields %}
-							<input type="checkbox" name="checks[]" value="{{field}}">
-							{{field}}
-							<br></br>
+							<div class='fields-container'>
+								<input type="checkbox" name="checks[]" value="{{field}}">
+								{{field}}
+							</div>
 						{% endfor %}
 					<input type="submit" value="Submit", name="Dinner">
 					</form>

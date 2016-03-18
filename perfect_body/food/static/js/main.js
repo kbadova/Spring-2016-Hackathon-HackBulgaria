@@ -140,7 +140,15 @@ $(document).ready(function() {
       data:form.serialize(),
       type: "POST",
       success:function(data){        
-        console.log(data);
+        if(data['success']) {
+          fields = data['data'];
+          Object.keys(fields).forEach(function(key) {
+            var query = ['input[type="checkbox"]', '[value="', key, '"]'].join("");
+            $(query)
+              .parent('.fields-container')
+              .append(['<span> - ', fields[key], '</span> g'].join(""))
+          });
+        }
       }
     });
   })
@@ -153,7 +161,15 @@ $(document).ready(function() {
       data:form.serialize(),
       type: "POST",
       success:function(data){        
-        console.log(data);
+        if(data['success']) {
+          fields = data['data'];
+          Object.keys(fields).forEach(function(key) {
+            var query = ['input[type="checkbox"]', '[value="', key, '"]'].join("");
+            $(query)
+              .parent('.fields-container')
+              .append(['<span> - ', fields[key], '</span> g'].join(""))
+          });
+        }
       }
     });
   })
@@ -166,7 +182,15 @@ $(document).ready(function() {
       data:form.serialize(),
       type: "POST",
       success:function(data){        
-        console.log(data);
+        if(data['success']) {
+          fields = data['data'];
+          Object.keys(fields).forEach(function(key) {
+            var query = ['input[type="checkbox"]', '[value="', key, '"]'].join("");
+            $(query)
+              .parent('.fields-container')
+              .append(['<span> - ', fields[key], '</span> g'].join(""))
+          });
+        }
       }
     });
   })
