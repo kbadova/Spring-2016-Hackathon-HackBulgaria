@@ -228,9 +228,12 @@ header {
 	.main_menu .breakfast,
 	.main_menu .lunch,
 	.main_menu .dinner {
-		display: inline-block;
-		width: 30%;
-		height: 100%;
+		float: left;
+	}
+
+	.main_menu .breakfast,
+	.main_menu .lunch{
+		margin-right: 19%;
 	}
 
 	.main_menu label {
@@ -332,6 +335,9 @@ header {
 			display: inline;		
 		}
 
+.history {
+	clear: both;
+}
 
 #map {
 	height: 300px;
