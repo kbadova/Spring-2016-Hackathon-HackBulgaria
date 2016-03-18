@@ -23,9 +23,9 @@ def home(request):
 
 @login_required(redirect_url=reverse_lazy('home'))
 def profile(request):
-    # print(request.POST)
     email = request.session['food_email']
     user = FoodUser.objects.get(email=email)
+
     name = user.name
     years = user.years
     weight = user.weight
@@ -41,6 +41,7 @@ def profile(request):
     breakfast_fields = Menu("breakfast")
     lunch_fields = Menu("lunch")
     dinner_fields = Menu("dinner")
+
     name, _, _, gender, years, weight, height, BMI, max_cal = get_cls_get_attr(FoodUser, request)
     if request.method == 'POST':
         pass
@@ -61,8 +62,10 @@ def profile(request):
         #                                         max_cal=calc_cal)
 
         print(request.POST.getlist('checks[]'))
-
+        get_quantity_of_food_breakfast(user, request.POST.getlist('checks[]'))
         return render(request, 'profile.html', locals())
+
+
     if request.POST.get("Lunch"):
         print(request.POST.getlist('checks[]'))
 
@@ -142,3 +145,26 @@ def Menu(meal):
     FOOD_CHOICES = foods
     # print(FOOD_CHOICES)
     return foods
+
+
+def get_quantity_of_food_breakfast(user, foods):
+    meal = {}
+    filtered_foods = []
+    breakfast_calories = (40 / 100.0) * user.max_cal
+    print(breakfast_calories)
+    foods_len = len(foods)
+    for food_name in foods:
+        item = Food.objects.get(name=food_name)
+        filtered_foods.append(item)
+    for food in filtered_foods:
+        while True:
+            grams_per_food = random.randrange(0, 400)
+            print("cal za 100gr" + str(food.calories / 100.0) + "name" + str(food.name))
+            cal_per_food = grams_per_food * (food.calories / 100.0)
+            if cal_per_food <= breakfast_calories - (foods_len-1)*30:
+                foods_len -= 1
+                breakfast_calories -= grams_per_food
+                meal[food.name] = grams_per_food
+                break
+    print(meal)
+    return meal
