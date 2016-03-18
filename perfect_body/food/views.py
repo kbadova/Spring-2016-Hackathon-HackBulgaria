@@ -190,10 +190,18 @@ def get_quantity_of_food_breakfast(user, foods):
             grams_per_food = random.randrange(0, 400)
             print("cal za 100gr" + str(food.calories / 100.0) + "name" + str(food.name))
             cal_per_food = grams_per_food * (food.calories / 100.0)
-            if cal_per_food <= breakfast_calories - (foods_len-1)*30:
+            if cal_per_food <= breakfast_calories - (foods_len - 1) * 30:
                 foods_len -= 1
                 breakfast_calories -= grams_per_food
                 meal[food.name] = grams_per_food
                 break
     print(meal)
     return meal
+
+
+def history(user, foods):
+    foods = breakfast()
+    email = request.session['food_email']
+    date = History.objects.filter(email=email)
+    for food in foods:
+        return render(request, 'profile.html', locals())

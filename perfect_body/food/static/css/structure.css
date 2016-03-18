@@ -245,6 +245,11 @@ header {
 		display: inline;
 	}
 
+	.main_menu input[type=submit] {
+		width: 100px;
+		margin-bottom: 20px;
+	}
+
 .regestration {
 	width: 100%;
 	margin: 30px auto;
@@ -388,4 +393,19 @@ header {
 
 #target {
     width: 345px;
+}
+
+
+.main_history table {
+	width: 100%;
+}
+.main_history th {
+	background: #eccdae;
+	border: 2px solid #b46348;
+	width: 50%;
+}
+
+.main_history td {
+	border-bottom: 1px solid #b46348;
+	width: 50%;
 }

@@ -131,7 +131,21 @@
 			</dt>
 
 			<dd class="main_history">
-				tuk e istoriqta
+				<table>
+					<tr>
+						<th>Date</th>
+						<th>Foods</th>
+					</tr>
+
+					{% for field in breakfast_fields%}
+						<tr>
+							<th> {{ history.date }}</th>
+							<th> {{ food }}</th>
+						</tr>
+					{% endfor%}
+
+				</table>
+
 			</dd>
 		</dl>
 	
