@@ -131,22 +131,20 @@ $(document).ready(function() {
       }
     });
   })
-<<<<<<< HEAD
 
-  // $("form[name='breakfast']").submit(function(e){
-  //   e.preventDefault();
-  //   var form = $(this);
-  //   $.ajax({
-  //     url:'/profile',
-  //     data:form.serialize(),
-  //     type: "POST",
-  //     success:function(data){        
-  //       console.log(data);
-  //     }
-  //   });
-  // })
+  $("form[name='breakfast']").submit(function(e){
+    e.preventDefault();
+    var form = $(this);
+    $.ajax({
+      url:'/breakfast',
+      data:form.serialize(),
+      type: "POST",
+      success:function(data){        
+        console.log(data);
+      }
+    });
+  })
 
   initAutocomplete();
-=======
->>>>>>> d9c7f7c11535f62545d199c0fcfaa45161a969ad
+
 });

@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^logout$', logout, name='logout'),
     url(r'^change_password$', changePassword, name='change_password'),
     url(r'^change_data$', changeData, name='change_data'),
+    url(r'^breakfast$', breakfast, name='Breakfast')
 ]

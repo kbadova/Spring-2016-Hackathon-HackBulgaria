@@ -34,41 +34,16 @@ def profile(request):
     max_cal = user.max_cal
     password = request.POST.get('password')
 
-<<<<<<< HEAD
-    fields = Menu()
-
-=======
-    if request.POST:
-        if request.POST.get('Change Password'):
-            print(request.POST)
-
     breakfast_fields = Menu("breakfast")
     lunch_fields = Menu("lunch")
     dinner_fields = Menu("dinner")
 
-    name, _, _, gender, years, weight, height, BMI, max_cal = get_cls_get_attr(FoodUser, request)
-    if request.method == 'POST':
-        pass
+
     if request.POST.get("Breakfast"):
-
-        # name, _, _, gender, years, weight, height = get_user_post_attr(request)
-
-        # BMI = int(weight) / ((int(height) / 100)**2)
-        # calc_cal = max_calories(int(height), int(weight), int(years), gender)
-        # new_password = request.POST.get('new_password')
-
-        # new_food_user = FoodUser.objects.filter(name=name)\
-        #                                 .update(password=new_password,
-        #                                         years=years,
-        #                                         weight=weight,
-        #                                         height=height,
-        #                                         BMI=BMI,
-        #                                         max_cal=calc_cal)
 
         print(request.POST.getlist('checks[]'))
         get_quantity_of_food_breakfast(user, request.POST.getlist('checks[]'))
         return render(request, 'profile.html', locals())
-
 
     if request.POST.get("Lunch"):
         print(request.POST.getlist('checks[]'))
@@ -78,7 +53,7 @@ def profile(request):
         print(request.POST.getlist('checks[]'))
 
         return render(request, 'profile.html', locals())
->>>>>>> d9c7f7c11535f62545d199c0fcfaa45161a969ad
+
     return render(request, 'profile.html', locals())
 
 
@@ -161,6 +136,19 @@ def changeData(request):
                                                     BMI=BMI,
                                                     max_cal=max_cal)
             return JsonResponse({"max_cal": max_cal, "BMI": BMI})
+    return JsonResponse({"success": False})
+
+
+def breakfast(request):
+    email = request.session['food_email']
+    user = FoodUser.objects.get(email=email)
+    if request.method == 'POST':
+        if request.POST.get("Breakfast"):
+            print('tuk sum')
+            print(request.POST.getlist('checks[]'))
+            get_quantity_of_food_breakfast(user, request.POST.getlist('checks[]'))
+
+            return JsonResponse({"success": True})
     return JsonResponse({"success": False})
 
 
